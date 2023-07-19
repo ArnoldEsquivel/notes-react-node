@@ -14,9 +14,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Tooltip from '@mui/material/Tooltip';
-import { BsMoonStars, BsMoonStarsFill } from 'react-icons/bs';
-import { RiTeamLine } from 'react-icons/ri';
-import { FaUserAstronaut } from 'react-icons/fa';
+import { CgProfile } from 'react-icons/cg';
+import {AiOutlineProfile} from 'react-icons/ai';
+import { FaRegStickyNote, FaStickyNote } from 'react-icons/fa';
 import { Button } from '@mui/material';
 import { RiLogoutCircleLine } from 'react-icons/ri';
 
@@ -91,8 +91,8 @@ export default function Sidebar({ children }) {
                         <IconButton onClick={handleDrawer} size='large'>
                             {
                                 open
-                                    ? <BsMoonStarsFill style={{ color: 'white' }} />
-                                    : <BsMoonStars style={{ color: 'white' }} />
+                                    ? <FaRegStickyNote style={{ color: 'white' }} />
+                                    : <FaStickyNote style={{ color: 'white' }} />
                             }
                         </IconButton>
                     </Tooltip>
@@ -118,7 +118,7 @@ export default function Sidebar({ children }) {
                                         color: 'white'
                                     }}
                                 >
-                                    <FaUserAstronaut size='2rem' style={{ color: 'white' }} />
+                                    <CgProfile size='2rem' style={{ color: 'white' }} />
                                 </ListItemIcon>
                                 <ListItemText primary='My Profile' sx={{ opacity: open ? 1 : 0, color: 'white' }} />
                             </ListItemButton>
@@ -146,7 +146,7 @@ export default function Sidebar({ children }) {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    <RiTeamLine size='2rem' style={{ color: 'white' }} />
+                                    <AiOutlineProfile size='2rem' style={{ color: 'white' }} />
                                 </ListItemIcon>
                                 <ListItemText primary='Notes' sx={{ opacity: open ? 1 : 0 }} />
                             </ListItemButton>

@@ -40,4 +40,65 @@ router.post('/note', async (req, res) => {
 
 })
 
+router.get('/notes/:id', async (req, res) => {
+    const { id } = req.params
+
+    await Note.findAll({
+        where: {
+            user_id: id
+        }
+    }).then((notes) => {
+        return res.status(200).json({
+            success: true,
+            message: "Notes found",
+            notes: notes
+        })
+    }).catch((err) => {
+        console.log('err', err)
+        return res.status(500).json({
+            success: false,
+            message: "Server error ocurred"
+        })
+    })
+})
+
+router.put('/note/:id', async (req, res) => {
+    const { id } = req.params
+    const { newNote } = req.body
+
+    await Note.update(newNote, {
+        where: { id: id }
+    }).then((note) => {
+        return res.status(200).json({
+            success: true,
+            message: "Note updated"
+        })
+    }).catch((err) => {
+        console.log('err', err)
+        return res.status(500).json({
+            success: false,
+            message: "Server error ocurred"
+        })
+    })
+})
+
+router.delete('/note/:id', async (req, res) => {
+    const { id } = req.params
+
+    await Note.destroy({
+        where: { id: id }
+    }).then((note) => {
+        return res.status(200).json({
+            success: true,
+            message: "Note deleted"
+        })
+    }).catch((err) => {
+        console.log('err', err)
+        return res.status(500).json({
+            success: false,
+            message: "Server error ocurred"
+        })
+    })
+})
+
 module.exports = router

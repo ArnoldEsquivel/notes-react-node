@@ -1,0 +1,67 @@
+.addNotesSpanButCont {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    span {
+        margin-right: 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+.noteCardsMainContainer {
+    width: 100%;
+    
+    .noteCardsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 1rem;
+
+        .noteCard {
+            width: 270px;
+            height: 270px;
+            border: 2px solid black;
+            border-radius: 1rem;
+            margin: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem;
+            background-color: white;
+            cursor: pointer;
+
+            &:hover {
+                border: 2px solid #800180;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin: 0;
+                margin-bottom: 1rem;
+                color: black;
+                text-align: center;
+                width: 100%;
+                border-bottom: 2px solid black;
+            }
+
+            span {
+                font-size: 1rem;
+                margin: 0;
+                color: black;
+                text-align: center;
+                height: 90px;
+            }
+
+            .noteCardButtons {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
