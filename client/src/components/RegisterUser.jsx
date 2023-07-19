@@ -87,6 +87,7 @@ const RegisterUser = () => {
                 {alert.message}
             </Alert>
             <div className="loginFormMainContainer">
+                <h1 style={{margin: 0, color: "black"}}>Register</h1>
                 <div className="loginFormCardContainer">
                     <form className='formStyle'>
                         <p>Name</p>

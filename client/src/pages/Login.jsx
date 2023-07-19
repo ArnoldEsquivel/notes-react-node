@@ -38,7 +38,7 @@ const Login = () => {
     };
 
     return (
-        <>
+        <div className="loginMainContainer">
             <div className="loginPageMainContainer">
                 <Alert
                     severity={alert.success ? 'success' : 'error'}
@@ -48,6 +48,7 @@ const Login = () => {
                     {alert.msg}
                 </Alert>
                 <div className="loginFormMainContainer">
+                <h1 style={{margin: 0, color: "black"}}>Login</h1>
                     <div className="loginFormCardContainer">
                         <form className='formStyle'>
                             <p>E-Mail</p>
@@ -95,7 +96,7 @@ const Login = () => {
                 </div>
             </div>
             <RegisterUser />
-        </>
+        </div>
     )
 }
 
