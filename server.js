@@ -6,16 +6,16 @@ const app = express();
 
 //Routes Import
 const user = require('./server/routes/user');
-// const note = require('./server/routes/note');
+const note = require('./server/routes/note');
 
 app.use(cors({ origin: '*' }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', user)
-// app.use('/api', note)
 
 try {
     require("./server/models/mysql");
+    app.use('/api', user)
+    app.use('/api', note)
 } catch (error) {
     console.log(error);
 }

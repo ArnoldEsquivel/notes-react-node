@@ -25,7 +25,6 @@ const RegisterUser = () => {
     }
 
     const registerUser = async () => {
-        console.log(user)
         await axios.post('/register', { user })
             .then(res => {
                 console.log('data res',res.data)
