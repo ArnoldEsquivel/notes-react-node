@@ -14,11 +14,11 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/api', user)
 // app.use('/api', note)
 
-// try {
-//     require("./server/models/mysql");
-// } catch (error) {
-//     console.log(error);
-// }
+try {
+    require("./server/models/mysql");
+} catch (error) {
+    console.log(error);
+}
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'client/dist')));
