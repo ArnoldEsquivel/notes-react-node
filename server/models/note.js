@@ -20,7 +20,7 @@ const Note = sequelize.define('note', {
     paranoid: true,
 });
 
-Note.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
-Note.sync({ alter: true });
+// Note.belongsTo(User, { foreignKey: 'user_id', targetKey: 'id' });
+// Note.sync({ alter: true });
 
 module.exports = Note;

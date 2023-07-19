@@ -8,8 +8,8 @@ const User = sequelize.define('user', {
         primaryKey: true,
         autoIncrement: true,
     },
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
+    name: DataTypes.STRING(90),
+    email: DataTypes.STRING(100),
     password: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
@@ -20,7 +20,7 @@ const User = sequelize.define('user', {
     paranoid: true,
 });
 
-User.hasMany(Note, { foreignKey: 'user_id' });
-User.sync({ alter: true });
+// User.hasMany(Note, { foreignKey: 'user_id' });
+// User.sync({ alter: true });
 
 module.exports = User;

@@ -5,13 +5,13 @@ const port = 5000;
 const app = express();
 
 //Routes Import
-// const user = require('./server/routes/user');
+const user = require('./server/routes/user');
 // const note = require('./server/routes/note');
 
-app.use(cors({ origin: 'http://127.0.0.1:5173' }))
+app.use(cors({ origin: '*' }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use('/api', user)
+app.use('/api', user)
 // app.use('/api', note)
 
 try {
