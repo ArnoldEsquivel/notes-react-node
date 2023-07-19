@@ -3,9 +3,10 @@ import './AddNote.scss'
 import { Button, Modal, TextField, Alert } from '@mui/material'
 import axios from 'axios'
 
-const AddNote = () => {
+const AddNote = ({getNotes}) => {
     const session = JSON.parse(localStorage.getItem('session'))
     const [open, setOpen] = useState(false)
+    const [confirmLenght, setConfirmLenght] = useState(true)
     const [alert, setAlert] = useState({
         message: '',
         success: false
@@ -21,6 +22,7 @@ const AddNote = () => {
             ...note,
             [e.target.name]: e.target.value
         })
+        countLenght()
     }
 
     const handleSubmit = async (e) => {
@@ -53,6 +55,27 @@ const AddNote = () => {
                 success: false
             })
         }, 3000)
+        getNotes()
+    }
+
+    const countLenght = () => {
+        if (note.title.length > 100) {
+            setAlert({
+                message: 'The title must be less than 100 characters',
+                success: false
+            })
+            setConfirmLenght(false)
+            resetAlert()
+        } else if (note.description.length > 1000) {
+            setAlert({
+                message: 'The description must be less than 1000 characters',
+                success: false
+            })
+            resetAlert()
+            setConfirmLenght(false)
+        } else {
+            setConfirmLenght(true)
+        }
     }
 
     return (
@@ -87,7 +110,8 @@ const AddNote = () => {
                             value={note.title}
                             onChange={handleChange}
                             fullWidth
-                        />
+                            error={!confirmLenght}
+                            />
                         <p>Content</p>
                         <TextField
                             id="description"
@@ -97,6 +121,7 @@ const AddNote = () => {
                             value={note.description}
                             onChange={handleChange}
                             fullWidth
+                            error={!confirmLenght}
                         />
                         <div className='addNoteButtonsContainer'>
                             <Button
@@ -111,6 +136,7 @@ const AddNote = () => {
                                 variant='contained'
                                 color='success'
                                 type="submit"
+                                disabled={confirmLenght}
                             >
                                 Submit
                             </Button>

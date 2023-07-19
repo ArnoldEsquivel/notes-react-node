@@ -33,6 +33,7 @@ router.post('/register', async (req, res) => {
                 email: user.email,
                 password: hash
             }).then((user) => {
+                // I know this is not the best practice, but I'm doing it for the sake of simplicity
                 const secret = "SingForJWTtesting "
                 const token = jwt.sign({ email: user.email, userId: user.id }, secret, { expiresIn: '3h' });
                 
@@ -54,6 +55,37 @@ router.post('/register', async (req, res) => {
             })
         }
     })
+})
+
+router.put('/verify_token', (req, res) => {
+    const { token, user } = req.body
+    // I know this is not the best practice, but I'm doing it for the sake of simplicity
+    const secret = "SingForJWTtesting "
+
+    try {
+        const decoded = jwt.verify(token, secret)
+        res.send({
+            status: 200,
+            message: 'Token is valid',
+            user: user,
+            token: token
+        })
+    } catch (err) {
+        if (err instanceof jwt.TokenExpiredError) {
+            const newToken = jwt.sign({ email: user.email, userId: user.id }, secret, { expiresIn: '3h' });
+            res.send({
+                status: 200,
+                message: 'Token is refreshed',
+                user: user,
+                token: newToken
+            })
+        } else {
+            res.send({
+                status: 400,
+                message: 'Token is invalid'
+            })
+        }
+    }
 })
 
 module.exports = router

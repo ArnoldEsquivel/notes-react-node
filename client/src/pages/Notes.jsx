@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './Notes.scss'
 import AddNote from '../components/AddNote'
 import EditNote from '../components/EditNote'
+import DeleteNote from '../components/DeleteNote'
 import axios from 'axios'
 import { Button, Alert, CircularProgress } from '@mui/material'
 
@@ -55,7 +56,7 @@ const Notes = () => {
             <h1>Notes Page</h1>
             <div className='addNotesSpanButCont'>
                 <span>Here you can add your notes</span>
-                <AddNote />
+                <AddNote getNotes={getNotes}/>
             </div>
             <div className='noteCardsMainContainer'>
                 <h2>My Notes</h2>
@@ -65,16 +66,21 @@ const Notes = () => {
                             ? <div className='loadingContainer'>
                                 <CircularProgress />
                             </div>
-                            : notes.map((note, index) => (
-                                <div className='noteCard' key={index}>
-                                    <h3>{note.title}</h3>
-                                    <span>{note.description}</span>
-                                    <div className='noteCardButtons'>
-                                        <EditNote note={note} getNotes={getNotes} setAlert={setAlert} />
-                                        <Button variant='contained' color='error'>Delete</Button>
-                                    </div>
+                            : notes.length === 0
+                                ? <div className='noNotesContainer'>
+                                    <p>You don't have any notes yet</p>
+                                    <AddNote getNotes={getNotes} />
                                 </div>
-                            ))
+                                : notes.map((note, index) => (
+                                    <div className='noteCard' key={index}>
+                                        <h3>{note.title}</h3>
+                                        <span>{note.description}</span>
+                                        <div className='noteCardButtons'>
+                                            <EditNote note={note} getNotes={getNotes} setAlert={setAlert} />
+                                            <DeleteNote note={note} getNotes={getNotes} setAlert={setAlert} />
+                                        </div>
+                                    </div>
+                                ))
                     }
                 </div>
             </div>

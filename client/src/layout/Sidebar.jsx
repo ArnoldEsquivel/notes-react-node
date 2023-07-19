@@ -98,7 +98,7 @@ export default function Sidebar({ children }) {
                     </Tooltip>
                 </div>
                 <Divider sx={{ backgroundColor: 'white' }} />
-                <List>
+                {/* <List>
                     <Tooltip title='My Profile' placement='right'>
                         <ListItem disablePadding sx={{ display: 'block' }}>
                             <ListItemButton
@@ -124,7 +124,7 @@ export default function Sidebar({ children }) {
                             </ListItemButton>
                         </ListItem>
                     </Tooltip>
-                </List>
+                </List> */}
                 <Divider sx={{ backgroundColor: 'white' }} />
                 <List>
                     <Tooltip title='Notes' placement='right'>

@@ -6,12 +6,14 @@ import axios from 'axios'
 const EditNote = ({ note, getNotes, setAlert }) => {
     const [open, setOpen] = useState(false)
     const [newNote, setNewNote] = useState({})
+    const [confirmLenght, setConfirmLenght] = useState(true)
 
     const handleChange = (e) => {
         setNewNote({
             ...newNote,
             [e.target.name]: e.target.value
         })
+        countLenght(e)
     }
 
     const handleSubmit = async (e) => {
@@ -36,6 +38,24 @@ const EditNote = ({ note, getNotes, setAlert }) => {
                 console.log(err)
             })
 
+    }
+
+    const countLenght = (e) => {
+        if (e.target.name == 'title' && newNote.title.length > 100) {
+            setAlert({
+                message: 'The title must be less than 100 characters',
+                success: false
+            })
+            setConfirmLenght(false)
+        } else if (e.target.name == 'description' && newNote.description.length > 1000) {
+            setAlert({
+                message: 'The description must be less than 1000 characters',
+                success: false
+            })
+            setConfirmLenght(false)
+        } else {
+            setConfirmLenght(true)
+        }
     }
 
     return (
@@ -63,6 +83,7 @@ const EditNote = ({ note, getNotes, setAlert }) => {
                             defaultValue={note.title}
                             onChange={handleChange}
                             fullWidth
+                            error={!confirmLenght}
                         />
                         <p>Content</p>
                         <TextField
@@ -73,6 +94,7 @@ const EditNote = ({ note, getNotes, setAlert }) => {
                             defaultValue={note.description}
                             onChange={handleChange}
                             fullWidth
+                            error={!confirmLenght}
                         />
                         <div className='editNoteButtonsContainer'>
                             <Button
@@ -87,6 +109,7 @@ const EditNote = ({ note, getNotes, setAlert }) => {
                                 variant='contained'
                                 color='success'
                                 type="submit"
+                                disabled={!confirmLenght}
                             >
                                 Submit
                             </Button>
