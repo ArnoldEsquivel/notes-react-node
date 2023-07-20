@@ -27,7 +27,6 @@ const RegisterUser = () => {
     const registerUser = async () => {
         await axios.post('/register', { user })
             .then(res => {
-                console.log('data res',res.data)
                 if (res.data) {
                     setAlert({
                         message: res.data.message,

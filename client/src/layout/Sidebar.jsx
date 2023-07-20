@@ -157,7 +157,7 @@ export default function Sidebar({ children }) {
                     {
                         open
                             ? <Button
-                                variant='outlined'
+                                variant='contained'
                                 color='error'
                                 sx={{ position: 'absolute', bottom: '0', marginBottom: '9px', marginLeft: '69px' }}
                                 onClick={() => logout()}

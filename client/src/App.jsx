@@ -18,8 +18,8 @@ function App() {
             <Route index element={<Login />} />
           </Route>
           <Route path='/Private' element={<PrivateRoute />}>
-            <Route index element={<MyProfile />} />
-            <Route path='/Private/Notes' element={<Notes />} />
+            <Route index element={<Notes />} />
+            {/* <Route path='/Private/Notes' element={<Notes />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>

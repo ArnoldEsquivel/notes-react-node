@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 let sequelize = new Sequelize(
     "notes_app",
     "root",
-    "-.t1n4mIWYAN.-",
+    "HERE GOES YOUR PASSWORD",
     {
         host: "localhost",
         dialect: "mysql",

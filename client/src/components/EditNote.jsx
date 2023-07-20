@@ -22,7 +22,7 @@ const EditNote = ({ note, getNotes, setAlert }) => {
         await axios.put('/note/' + note.id, { newNote })
             .then(res => {
                 setAlert({
-                    message: `Note ${newNote.title} updated successfully`,
+                    message: `Note ${note.title} updated successfully`,
                     success: res.data.success
                 })
                 setNewNote({

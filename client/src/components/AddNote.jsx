@@ -136,7 +136,7 @@ const AddNote = ({getNotes}) => {
                                 variant='contained'
                                 color='success'
                                 type="submit"
-                                disabled={confirmLenght}
+                                disabled={!confirmLenght}
                             >
                                 Submit
                             </Button>
